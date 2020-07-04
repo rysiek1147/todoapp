@@ -14,10 +14,10 @@ class List extends React.Component {
     return (
       <>
       <ul className='tasks-section__list' id='tasks-list'>
-        {data && data.map((item, index) => 
-          <li className='task' key={index}>
-            {item}
-            <button className='btn btn--red' onClick={() => this.handleRemoveTask(index)}>Remove</button>
+        {data && data.map(({id, name}) => 
+          <li className='task' key={id}>
+            {name}
+            <button className='btn btn--red' onClick={() => this.handleRemoveTask(id)}>Remove</button>
           </li>
         )}
       </ul>

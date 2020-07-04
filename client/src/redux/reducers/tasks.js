@@ -13,7 +13,7 @@ export const tasksReducer = (state = {}, action) => {
       return {
         ...state,
         tasks: [
-          ...state.tasks.filter((item, index) => index !== action.payload)
+          ...state.tasks.filter((item) => item.id !== action.payload)
         ]
       }
     case types.UPDATE_TASKS:

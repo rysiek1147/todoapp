@@ -1,5 +1,6 @@
 import React from 'react';
 import {socket} from '../../App';
+import randomID from '@rysiek/randomid-generator';
 
 class taskForm extends React.Component {
   constructor(props) {
@@ -17,8 +18,9 @@ class taskForm extends React.Component {
   addTask() {
     const {taskName} = this.state;
     const {actionSubmit} = this.props;
-    actionSubmit(taskName);
-    socket.emit('addTask', taskName);
+    const id = randomID(10);
+    actionSubmit(id, taskName);
+    socket.emit('addTask', ({id: id, name: taskName}));
     this.setState({
       taskName: ''
     })

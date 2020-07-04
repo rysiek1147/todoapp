@@ -18,7 +18,7 @@ class App extends React.Component {
     const {addTask, removeTask, updateTasks} = this.props;
     socket = io('localhost:8000');
     socket.on('updateData', (tasks) => updateTasks(tasks));
-    socket.on('addTask', (taskName) => addTask(taskName));
+    socket.on('addTask', ({id, name}) => addTask(id, name));
     socket.on('removeTask', (taskId) => removeTask(taskId));
   }
 

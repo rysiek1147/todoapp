@@ -7,10 +7,9 @@ const tasks = [];
 
 io.on('connection', (socket) => {
   socket.emit('updateData', tasks);
-  socket.on('addTask', taskName => {
-    tasks.push(taskName);
-    socket.broadcast.emit('addTask', taskName);
-    console.log('add task');
+  socket.on('addTask', ({id, name}) => {
+    tasks.push({id: id, name: name});
+    socket.broadcast.emit('addTask', ({id: id, name: name}));
   });
   socket.on('removeTask', taskId => {
     tasks.splice(taskId, 1);
